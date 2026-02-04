@@ -1,0 +1,23 @@
+<template>
+  <div class="mb-6">
+    <h1 class="text-3xl font-bold mb-6">
+      {{ title }}
+    </h1>
+    <p v-if="description" class="mb-6 italic">
+      {{ description }}
+    </p>
+  </div>
+</template>
+
+<script setup>
+defineProps({
+  title: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    default: ''
+  }
+})
+</script>
