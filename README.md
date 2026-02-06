@@ -37,7 +37,7 @@ cat app/data/podcasts.yaml | yq -j > app/data/podcasts.json
 
 > [!NOTE]  
 > `yq` — консольная утилита для работы с YAML файлами.
-> Более побробно см. https://github.com/mikefarah/yq
+> Более подробно см. https://github.com/mikefarah/yq
 
 
 ## Локальный запуск
