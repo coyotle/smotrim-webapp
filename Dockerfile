@@ -3,13 +3,13 @@
 FROM oven/bun:1 AS build
 WORKDIR /app
 
-COPY package.json bun.lock* ./
+COPY src/package.json src/bun.lock* ./
 
 # use ignore-scripts to avoid building node modules like better-sqlite3
 RUN bun install --frozen-lockfile --ignore-scripts
 
 # Copy the entire project
-COPY . .
+COPY src/ .
 
 RUN bun --bun run build
 
