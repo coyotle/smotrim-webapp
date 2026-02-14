@@ -33,6 +33,10 @@
         },
         'meta_а': () => {  // Meta+А для кириллицы
             input.value?.inputRef?.focus()
+        },
+        escape: { // очистка строки поиска
+            usingInput: true,
+            handler: () => clearSearch()
         }
     })
 
@@ -57,6 +61,10 @@
         p1.title.toLowerCase().localeCompare(p2.title.toLowerCase())
     )
     })
+
+    const clearSearch = ()=>{
+        searchQuery.value=''
+    }
 
 
 </script>
