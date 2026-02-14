@@ -2,7 +2,12 @@
 <div class="max-w-6xl mx-auto px-4 py-8">
     <!-- Поиск -->
     <div class="mb-6 flex justify-center">
-      <UInput v-model="searchQuery" placeholder="Поиск..." class="w-full max-w-md" />
+      <UInput ref="input" v-model="searchQuery" icon="i-lucide-search" class="w-full max-w-md" > 
+        <template #trailing>
+            <UKbd value="meta" />
+            <UKbd value="f" />
+        </template>
+    </UInput>
     </div>
 
     <!-- Список карточек -->
@@ -19,6 +24,17 @@
 
 <script setup>
     import { getAllPodcasts } from '~/utils/podcasts.ts'
+
+    const input = useTemplateRef('input')
+
+    defineShortcuts({
+        'meta_f': () => {  // Meta+F
+            input.value?.inputRef?.focus()
+        },
+        'meta_а': () => {  // Meta+А для кириллицы
+            input.value?.inputRef?.focus()
+        }
+    })
 
     const searchQuery = ref('')
     const allPodcasts = getAllPodcasts()
@@ -41,5 +57,6 @@
         p1.title.toLowerCase().localeCompare(p2.title.toLowerCase())
     )
     })
+
 
 </script>
