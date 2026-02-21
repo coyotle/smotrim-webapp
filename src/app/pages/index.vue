@@ -2,7 +2,7 @@
 <div class="max-w-6xl mx-auto px-4 py-8">
     <!-- Поиск -->
     <div class="mb-6 flex justify-center">
-      <UInput ref="input" v-model="searchQuery" icon="i-lucide-search" class="w-full max-w-md" > 
+      <UInput ref="input" v-model="searchQuery" icon="i-lucide-search" class="w-full max-w-md" >
         <template #trailing>
             <UKbd value="meta" />
             <UKbd value="f" />
@@ -12,8 +12,8 @@
 
     <!-- Список карточек -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
-      <PodcastCard 
-        v-for="podcast in filteredPodcasts" 
+      <PodcastCard
+        v-for="podcast in filteredPodcasts"
         :key="podcast.id"
         :podcast="podcast"
       />
@@ -24,6 +24,17 @@
 
 <script setup>
     import { getAllPodcasts } from '~/utils/podcasts.ts'
+
+    useHead({
+      title: 'Подкасты радиостанций',
+      meta: [
+        { name: 'description', content: 'Слушайте подкасты радиостанций Вести ФМ, Маяк, Культура и других.' },
+        { name: 'keywords', content: 'подкасты, радио, вести фм, маяк, культура, россия, слушать онлайн, аудиопрограммы, выпуски' },
+        { property: 'og:title', content: 'Подкасты радиостанций' },
+        { property: 'og:description', content: 'Слушайте подкасты радиостанций Вести ФМ, Маяк, Культура и других' },
+        { property: 'og:type', content: 'website' }
+      ]
+    })
 
     const input = useTemplateRef('input')
 
@@ -48,7 +59,7 @@
 
         const q = searchQuery.value.trim().toLowerCase()
 
-        const podcasts = q 
+        const podcasts = q
             ? allPodcasts.filter(podcast => {
                 const title = podcast.title?.toLowerCase() || ''
                 const desc = podcast.description?.toLowerCase() || ''
@@ -57,7 +68,7 @@
             })
             : allPodcasts
 
-        return [...podcasts].sort((p1, p2) => 
+        return [...podcasts].sort((p1, p2) =>
         p1.title.toLowerCase().localeCompare(p2.title.toLowerCase())
     )
     })

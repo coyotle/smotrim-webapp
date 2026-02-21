@@ -1,9 +1,9 @@
 <template>
   <div class="max-w-6xl mx-auto px-4 py-8">
     <!-- Заголовок подкаста -->
-    <PodcastHeader 
-      :title="podcast?.title || ''" 
-      :description="podcast?.description" 
+    <PodcastHeader
+      :title="podcast?.title || ''"
+      :description="podcast?.description"
     />
 
     <!-- Список эпизодов -->
@@ -14,8 +14,8 @@
     />
 
     <!-- Кнопка "Ещё" -->
-    <div 
-      v-if="hasMore && !pending" 
+    <div
+      v-if="hasMore && !pending"
       class="my-4 text-center"
     >
       <button
@@ -56,6 +56,23 @@ if (!id || isNaN(Number(id))) {
 const { data, pending, error } = await useFetch(`/api/p/${type}/${id}`)
 const podcast = computed(() => data.value?.podcast)
 
+// Динамические SEO мета-теги для страницы подкаста
+useHead(() => ({
+  title: podcast.value ? `Подкаст "${podcast.value.title}" - ${podcast.value.station_name}` : 'Подкаст',
+  meta: [
+    { 
+      name: 'description', 
+      content: podcast.value?.description 
+        ? `Слушайте подкаст "${podcast.value.title}". ${podcast.value.description?.substring(0, 120)}...`
+        : 'Слушайте подкасты радиостанций Вести ФМ, Маяк и других'
+    },
+    { name: 'keywords', content: `подкаст, радио, слушать онлайн, выпуски, аудиопрограмма, ${podcast.value.title}, ${podcast.value.station_name}` },
+    { property: 'og:title', content: podcast.value ? `${podcast.value.title} - Смотрим` : 'Подкаст' },
+    { property: 'og:description', content: podcast.value?.description || 'Слушайте подкасты российских радиостанций' },
+    { property: 'og:type', content: 'website' }
+  ]
+}))
+
 // Пагинация
 const currentPage = ref(1)
 const allEpisodes = ref([])
@@ -73,13 +90,13 @@ watchEffect(() => {
 // Загрузка дополнительных эпизодов
 const loadMore = async () => {
   if (loadingMore.value || !hasMore.value) return
-  
+
   try {
     loadingMore.value = true
     currentPage.value++
-    
+
     const response = await $fetch(`/api/p/${type}/${id}?page=${currentPage.value}`)
-    
+
     if (response?.episodes && response.episodes.length > 0) {
       // Добавляем новые эпизоды в конец списка
       allEpisodes.value = [...allEpisodes.value, ...response.episodes]

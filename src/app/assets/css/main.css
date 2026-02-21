@@ -1,2 +1,192 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+/* GitHub Light Theme Colors */
+@theme static {
+  /* Primary - GitHub Blue */
+  --color-primary-50: #b6dfff;
+  --color-primary-100: #80c1ff;
+  --color-primary-200: #4ba3ff;
+  --color-primary-300: #1685ff;
+  --color-primary-400: #0969da;
+  --color-primary-500: #0969da;
+  --color-primary-600: #0757b3;
+  --color-primary-700: #054692;
+  --color-primary-800: #033571;
+  --color-primary-900: #012450;
+  --color-primary-950: #001a3d;
+
+  /* Secondary - Deep Purple */
+  --color-secondary-50: #f3e8ff;
+  --color-secondary-100: #e9d5ff;
+  --color-secondary-200: #d8b4fe;
+  --color-secondary-300: #c084fc;
+  --color-secondary-400: #a855f7;
+  --color-secondary-500: #8250df;
+  --color-secondary-600: #7c3aed;
+  --color-secondary-700: #6d28d9;
+  --color-secondary-800: #5b21b6;
+  --color-secondary-900: #4c1d95;
+  --color-secondary-950: #3b0764;
+
+  /* Success - GitHub Green */
+  --color-success-50: #dafbe1;
+  --color-success-100: #aceebb;
+  --color-success-200: #7edd95;
+  --color-success-300: #4fca68;
+  --color-success-400: #2fb34a;
+  --color-success-500: #1a7f37;
+  --color-success-600: #16682f;
+  --color-success-700: #125227;
+  --color-success-800: #0e3c1d;
+  --color-success-900: #0a2813;
+  --color-success-950: #051409;
+
+  /* Info - GitHub Blue */
+  --color-info-50: #b6dfff;
+  --color-info-100: #80c1ff;
+  --color-info-200: #4ba3ff;
+  --color-info-300: #1685ff;
+  --color-info-400: #0969da;
+  --color-info-500: #0969da;
+  --color-info-600: #0757b3;
+  --color-info-700: #054692;
+  --color-info-800: #033571;
+  --color-info-900: #012450;
+  --color-info-950: #001a3d;
+
+  /* Warning - Amber */
+  --color-warning-50: #fefce8;
+  --color-warning-100: #fef9c3;
+  --color-warning-200: #fef08a;
+  --color-warning-300: #fde047;
+  --color-warning-400: #facc15;
+  --color-warning-500: #eab308;
+  --color-warning-600: #ca8a04;
+  --color-warning-700: #a16207;
+  --color-warning-800: #9a6700;
+  --color-warning-900: #854d0e;
+  --color-warning-950: #713f12;
+
+  /* Error - GitHub Red */
+  --color-error-50: #ffeef0;
+  --color-error-100: #ffd6da;
+  --color-error-200: #ffadba;
+  --color-error-300: #ff8092;
+  --color-error-400: #ff5870;
+  --color-error-500: #cf222e;
+  --color-error-600: #b41f2a;
+  --color-error-700: #951825;
+  --color-error-800: #7a1520;
+  --color-error-900: #63111b;
+  --color-error-950: #4c0d16;
+
+  /* Neutral - GitHub Gray */
+  --color-neutral-50: #f6f8fa;
+  --color-neutral-100: #eaeef2;
+  --color-neutral-200: #d0d7de;
+  --color-neutral-300: #afb8c1;
+  --color-neutral-400: #8c959f;
+  --color-neutral-500: #6e7781;
+  --color-neutral-600: #57606a;
+  --color-neutral-700: #424a53;
+  --color-neutral-800: #24292f;
+  --color-neutral-900: #1f2328;
+  --color-neutral-950: #0d1117;
+}
+
+/* Dark theme overrides using CSS variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Primary - GitHub Blue (lighter for dark mode) */
+    --color-primary-50: #001a3d;
+    --color-primary-100: #012450;
+    --color-primary-200: #033571;
+    --color-primary-300: #054692;
+    --color-primary-400: #2f81f7;
+    --color-primary-500: #2f81f7;
+    --color-primary-600: #58a6ff;
+    --color-primary-700: #79c0ff;
+    --color-primary-800: #a5d5ff;
+    --color-primary-900: #d1e8ff;
+    --color-primary-950: #e6f3ff;
+
+    /* Secondary - Material Deep Purple (lighter) */
+    --color-secondary-50: #3b0764;
+    --color-secondary-100: #4c1d95;
+    --color-secondary-200: #5b21b6;
+    --color-secondary-300: #6d28d9;
+    --color-secondary-400: #c084fc;
+    --color-secondary-500: #c084fc;
+    --color-secondary-600: #d8b4fe;
+    --color-secondary-700: #e9d5ff;
+    --color-secondary-800: #f3e8ff;
+    --color-secondary-900: #faf5ff;
+    --color-secondary-950: #fbfaff;
+
+    /* Success - GitHub Green (lighter for dark mode) */
+    --color-success-50: #051409;
+    --color-success-100: #0a2813;
+    --color-success-200: #0e3c1d;
+    --color-success-300: #125227;
+    --color-success-400: #3fb950;
+    --color-success-500: #3fb950;
+    --color-success-600: #56d364;
+    --color-success-700: #7ee787;
+    --color-success-800: #aff5b4;
+    --color-success-900: #dafbe1;
+    --color-success-950: #effdf5;
+
+    /* Info - GitHub Blue (lighter) */
+    --color-info-50: #001a3d;
+    --color-info-100: #012450;
+    --color-info-200: #033571;
+    --color-info-300: #054692;
+    --color-info-400: #2f81f7;
+    --color-info-500: #2f81f7;
+    --color-info-600: #58a6ff;
+    --color-info-700: #79c0ff;
+    --color-info-800: #a5d5ff;
+    --color-info-900: #d1e8ff;
+    --color-info-950: #e6f3ff;
+
+    /* Warning - Amber (lighter) */
+    --color-warning-50: #713f12;
+    --color-warning-100: #854d0e;
+    --color-warning-200: #9a6700;
+    --color-warning-300: #d29922;
+    --color-warning-400: #eab308;
+    --color-warning-500: #facc15;
+    --color-warning-600: #fde047;
+    --color-warning-700: #fef08a;
+    --color-warning-800: #fef9c3;
+    --color-warning-900: #fefce8;
+    --color-warning-950: #fffff0;
+
+    /* Error - GitHub Red (lighter for dark mode) */
+    --color-error-50: #4c0d16;
+    --color-error-100: #63111b;
+    --color-error-200: #7a1520;
+    --color-error-300: #f85149;
+    --color-error-400: #f85149;
+    --color-error-500: #ff7b72;
+    --color-error-600: #ffaba8;
+    --color-error-700: #ffc9c7;
+    --color-error-800: #ffeef0;
+    --color-error-900: #fff5f5;
+    --color-error-950: #fffafa;
+
+    /* Neutral - GitHub Dark Gray */
+    --color-neutral-50: #0d1117;
+    --color-neutral-100: #161b22;
+    --color-neutral-200: #21262d;
+    --color-neutral-300: #30363d;
+    --color-neutral-400: #484f58;
+    --color-neutral-500: #6e7681;
+    --color-neutral-600: #8b949e;
+    --color-neutral-700: #a5aeb7;
+    --color-neutral-800: #c9d1d9;
+    --color-neutral-900: #e6edf3;
+    --color-neutral-950: #f0f6fc;
+  }
+}

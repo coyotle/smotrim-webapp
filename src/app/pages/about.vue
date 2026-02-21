@@ -16,3 +16,16 @@
     <p class="text-body mb-4">Если у вас есть вопросы или претензии, связанные с правами на используемые материалы, пожалуйста, направляйте их по адресу <a href="mailto:me@coyotle.ru" class="font-medium text-fg-brand underline hover:no-underline">me@coyotle.ru</a>.</p>
     </div>
 </template>
+
+<script setup>
+useHead({
+  title: 'О проекте',
+  meta: [
+    { name: 'description', content: 'О проекте - некоммерческий веб-клиент для прослушивания подкастов радиостанций на основе API Smotrim.ru' },
+    { name: 'keywords', content: 'о проекте, информация, smotrim, веб-клиент, подкасты' },
+    { property: 'og:title', content: 'О проекте' },
+    { property: 'og:description', content: 'Некоммерческий веб-клиент для прослушивания подкастов российских радиостанций' },
+    { property: 'og:type', content: 'website' }
+  ]
+})
+</script>
